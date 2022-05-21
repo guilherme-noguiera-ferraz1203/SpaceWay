@@ -1,6 +1,8 @@
 import pygame
-from scenes.BaseScene import SceneBase
-from scenes.Menu import MenuScene
+from BaseScene import *
+from Menu import *
+
+
 now = 0
 swidth, sheight = 0,0
 
@@ -61,8 +63,8 @@ class Splash(SceneBase):
         pass
 
     def Render(self, screen):
-        logo = pygame.image.load('./images/logo.bmp')
-        logo = pygame.transform.scale(logo, (swidth/3.5, sheight/3.5))
+        logo = pygame.image.load('./images/gasosa.jpg')
+        logo = pygame.transform.scale(logo, (swidth, sheight))
         logorect = logo.get_rect()
         logorect.center = ((swidth / 2), (sheight / 2))
         # For the sake of brevity, the title scene is a blank red screen
@@ -70,7 +72,3 @@ class Splash(SceneBase):
         screen.blit(logo, logorect)
         if pygame.time.get_ticks() > now + 2500:
             self.SwitchToScene(MenuScene())
-
-
-
-

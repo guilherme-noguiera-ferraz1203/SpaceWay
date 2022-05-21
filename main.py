@@ -1,5 +1,5 @@
-from scenes.splash import run_game
-from scenes.splash import Splash
+from scenes.splash import *
+
 from screeninfo import get_monitors
 
 for m in get_monitors():
