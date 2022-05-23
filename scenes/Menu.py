@@ -8,7 +8,7 @@ import sys
 
 
 w,h = 0,0
-click, kclick = False, False
+click= False
 selected = 0
 vh, vw = 0, 0
 
@@ -30,10 +30,10 @@ class MenuScene(SceneBase):
         pygame.mouse.set_visible(True)
 
 
-        Ttitle.createText("Retorno A DLL",(50*vw, 15*vh), 2)
-        Bjogar.createButton((255,0,0), (0,255,0), (50*vw,35*vh),"Jogar")
-        Bsettings.createButton((255, 0, 0), (0, 255, 0), (50 * vw, 50 * vh), "Settings")
-        Bquit.createButton((255, 0, 0), (0, 255, 0), (50 * vw, 65 * vh), "Quit")
+        Ttitle.createText("SpaceWay",(50*vw, 15*vh), 2)
+        Bjogar.createButton((255,0,0), (0,255,0), (50*vw,35*vh),"Jogar", radius=50)
+        Bsettings.createButton((255, 0, 0), (0, 255, 0), (50 * vw, 50 * vh), "Settings",radius=50)
+        Bquit.createButton((255, 0, 0), (0, 255, 0), (50 * vw, 65 * vh), "Quit",radius=50)
 
 
     def ProcessInput(self, events, pressed_keys):
@@ -67,7 +67,14 @@ class MenuScene(SceneBase):
         pass
 
     def Render(self, screen):
-        screen.fill((0, 0, 100))
+        
+        bkg= pygame.image.load('./images/background/bkg03.png')
+        bkg = pygame.transform.scale(bkg, (w, h))
+        bkgrect = bkg.get_rect()
+        bkgrect.center = ((w / 2), (h / 2))
+        screen.blit(bkg, bkgrect)
+
+
         Ttitle.render(screen)
         Bjogar.Render(screen)
         Bquit.Render(screen)
